@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+<view>是否允许获取用户信息？</view>
+<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">允许</button>
+<button>拒绝</button>
+</view>
