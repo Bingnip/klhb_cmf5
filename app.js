@@ -10,34 +10,52 @@ App({
     this.userLogin();
   },
   userLogin: function() {
-    var codes;
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {  //用户已授权
-          wx.getUserInfo({
-            success: res=> {
-              var userInfo = '';
-              this.globalData.userInfo = userInfo = res.userInfo;
-              var url = this.setConfig.url + '/klhb_cmf5/public/index.php/user/login/dologin';
-              var data = {
-                  user_name : userInfo.nickName,
-                  nick_name : userInfo.nickNmae,
-                  avatar_url : userInfo.avataUrl,
-                  sex : userInfo.gender,
-                  country : userInfo.country,
-                  province : userInfo.province,
-                  city : userInfo.city
-              };
-              this.userLogin(url, data);
-            },
-          })
-        } else {   //用户未授权
-          wx.authorize({
-            scope: 'scope.userInfo',
-            complete: res => {
+    var codes; 
+    //获取code
+    wx.login({ 
+      success: res =>{
+        if(res.code) {    
+          codes = res.code;
+          loginInfo.code = res.code;
+           //获取用户信息
+          wx.getSetting({
+            success: res => {
+              //用户已授权
+              if (res.authSetting['scope.userInfo']) {  
+                wx.getUserInfo({
+                  success: res => {
+                    var userInfo = '';
+                    this.globalData.userInfo = userInfo = res.userInfo;
+                    var url = this.setConfig.url + '/klhb_cmf5/public/index.php/user/login/dologin';
+                    var data = {
+                      user_name: userInfo.nickName,
+                      nick_name: userInfo.nickName,
+                      avatar_url: userInfo.avatarUrl,
+                      sex: userInfo.gender,
+                      country: userInfo.country,
+                      province: userInfo.province,
+                      city: userInfo.city,
+                      code: codes
+                    };
+                 
+                    this.postLogin(url, data);
+                   
+                  }
+                })
+              } else {   //用户未授权
+                console.log('用户未授权');
+                wx.authorize({
+                  scope: 'scope.userInfo',
+                  complete: res => {
 
+                  }
+                })
+              }
             }
           })
+        } else { 
+          this.userLogin();   //code获取出错后，需要重新调用userlogin获取code，直到成功
+          return;
         }
       }
     })
@@ -49,9 +67,8 @@ App({
       data: data,
       method: 'POST',
       header: { "Content-Type": "application/x-www-form-urlencoded" },
-      complete: function(res) {
+      success: function(res) {
         console.log(res);
- 
       }
     })
   }
