@@ -1,0 +1,5 @@
+<!--pages/hpage/hpage.wxml-->
+<view class="container">
+  <!-- <image src="userInfo.avataUrl"></image> -->
+  口令红包
+</view>

@@ -4,7 +4,7 @@ App({
   setConfig: { url: 'https://www.challs.top' },
   globalData:{
     userInfo: null,
-
+    token: '',
   },
   onLaunch: function () {
     this.userLogin();
@@ -26,6 +26,7 @@ App({
                   success: res => {
                     var userInfo = '';
                     this.globalData.userInfo = userInfo = res.userInfo;
+                    //用户信息入库
                     var url = this.setConfig.url + '/klhb_cmf5/public/index.php/user/login/dologin';
                     var data = {
                       user_name: userInfo.nickName,
@@ -37,9 +38,10 @@ App({
                       city: userInfo.city,
                       code: codes
                     };
-                 
                     this.postLogin(url, data);
-                   
+                    wx.navigateTo({
+                      url: '../hpage/hpage'
+                    });
                   }
                 })
               } else {   //用户未授权
@@ -47,7 +49,7 @@ App({
                 wx.authorize({
                   scope: 'scope.userInfo',
                   complete: res => {
-
+                      console.log(res);
                   }
                 })
               }
@@ -67,8 +69,18 @@ App({
       data: data,
       method: 'POST',
       header: { "Content-Type": "application/x-www-form-urlencoded" },
-      success: function(res) {
-        console.log(res);
+      success: res => {
+        if(res.data.code != 20000){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'loading',
+            mask: true,
+            duration: 1500
+          })
+        }
+        if(res.data.token){
+          this.globalData.token = res.data.token;
+        }
       }
     })
   }
