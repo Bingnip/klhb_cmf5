@@ -3,3 +3,18 @@
   <!-- <image src="userInfo.avataUrl"></image> -->
   口令红包
 </view>
+<view class="container">
+  <text>设置口令</text><input class="input"></input>
+</view>
+<view class="container">
+  <text>赏金 (元)</text><input class="input"></input>
+</view>
+<view class="container">
+  <text>数量 (个)</text><input class="input"></input>
+</view>
+<view class="container">
+  <text>广告</text><switch></switch>
+  <text>分享到广场</text><switch></switch>
+</view>
+<button>生成语音口令</button>
+<view>需支付<text></text>元服务费</view>

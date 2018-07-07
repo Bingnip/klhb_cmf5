@@ -4,7 +4,7 @@ App({
   setConfig: { url: 'https://www.challs.top' },
   globalData:{
     userInfo: null,
-    token: '',
+    token: '',  //获取token后每一次请求都会验证token是否存在，不存在则提示需要登录
   },
   onLaunch: function () {
     this.userLogin();
