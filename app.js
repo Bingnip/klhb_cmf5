@@ -72,7 +72,7 @@ App({
       success: res => {
         if(res.data.code != 20000){
           wx.showToast({
-            title: res.data.msg,
+            title: '加载中...',
             icon: 'loading',
             mask: true,
             duration: 1500
