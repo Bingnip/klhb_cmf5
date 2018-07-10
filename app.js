@@ -39,9 +39,7 @@ App({
                       code: codes
                     };
                     this.postLogin(url, data);
-                    wx.navigateTo({
-                      url: '../hpage/hpage'
-                    });
+          
                   }
                 })
               } else {   //用户未授权
@@ -63,7 +61,7 @@ App({
     })
   },
   //提交
-  postLogin: function(url, data, callback) {
+  postLogin: function(url, data, callback = function(){} ) {
     wx.request({
       url: url,
       data: data,
@@ -81,6 +79,7 @@ App({
         if(res.data.token){
           this.globalData.token = res.data.token;
         }
+        callback(res);        
       }
     })
   }

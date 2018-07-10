@@ -11,3 +11,13 @@
 .input {
   border:1rpx solid black;
 }
+.adv{
+  width: 690rpx;
+  height: 180rpx;
+  margin:30rpx auto;
+  position: relative;
+}
+.adv image{
+  width:100%;
+  height: 100%;
+}
