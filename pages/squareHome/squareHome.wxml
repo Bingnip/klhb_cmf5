@@ -1,0 +1,43 @@
+<view class="tab">
+  <!-- <view class="tab-con tab-txt {{ selectArea1 ? 'textoncol' : ''}}" bindtap="clickredPacket">
+    <text>{{allredPacket}}</text>
+    <view src="/images/buttom-down.png" class="personal_image {{selectArea1 ? 'rotateRight' : ''}}"></view>
+  </view> -->
+  <view class="tab-con tab-txt {{ selectArea2 ? 'textoncol' : ''}}"  bindtap='clickrank'>
+    <text>{{rank}}</text>
+    <view src="/images/buttom-down.png" class="personal_image {{selectArea2 ? 'rotateRight' : ''}}"></view>
+  </view>
+</view>
+
+<view class="lists">
+<block wx:for="{{redPacketList}}" wx:for-item="item">
+  <navigator class="red-packetList-bg" url="../recordDetails/recordDetails?pid={{item.id}}">
+    <view class="red-packetList-imgbg">
+      <view class="adimg">
+        <image src="{{item.adimgsrc}}"></image>
+        <view class='red-packetList-contentype'>{{redPacketType[0]}}</view>
+      </view>
+    </view>
+        <view class='red-packetList-txt'>
+      <view class='red-packetList-txt-l'>
+        <view class='red-packetList-txt-l-headico'>
+          <image src='{{item.ownerImg}}'></image>
+        </view>
+        <view class='red-packetList-txt-l-con'>
+          <view class='sender-name'>{{item.ownerName}}</view>
+          <view class='senderDate'>{{item.senderDate}}</view>
+        </view>
+      </view>
+      <view class='red-packetList-txt-r'>
+        <view class='red-packetList-txt-r-ico'>
+          <image class='red-packetList-txt-r-ico-ringht' src='/images/right-arrows.png'></image>
+          <image class='red-packetList-txt-r-ico-redpacketimg' src='/images/square-redpacket-ig.png'></image>
+        </view>
+        <view class='red-packetList-txt-r-txt'>共抢<text class='red'>{{item.amount}}</text>元</view>
+      </view>
+      <view class='red-num'>领取{{item.receive_num}}/{{item.num}}个</view>
+    </view>
+  </navigator>
+</block>
+</view>
+

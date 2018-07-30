@@ -1,0 +1,11 @@
+<image style="width:200rpx;height:200rpx;" src='{{ownerImg}}'></image>
+<text>{{ownerName}}</text>
+<view>{{wenan.describe}}</view>
+
+<view class="lower">
+  <view class="qrcode">
+    <image src="{{qrcode}}"></image>
+    <button open-type='share'>转发到群聊</button>
+    <button bindtap="sheng">生成朋友圈分享图</button>
+  </view>
+</view>

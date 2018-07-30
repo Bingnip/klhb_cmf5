@@ -1,11 +1,39 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/squareHome/squareHome",
+    "pages/share/share",
+    "pages/userCenter/userCenter"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#DE4C56",
+    "borderStyle": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "发红包",
+        "iconPath": "images/red-packet.png",
+        "selectedIconPath": "images/red-packet-on.png"
+      },
+      {
+        "pagePath": "pages/squareHome/squareHome",
+        "text": "广场",
+        "iconPath": "images/square.png",
+        "selectedIconPath": "images/square-on.png"
+      },
+      {
+        "pagePath": "pages/userCenter/userCenter",
+        "text": "我的包",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-on.png"
+      }
+    ]
   }
 }

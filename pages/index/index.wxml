@@ -9,13 +9,13 @@
 </view>
 <form bindsubmit="formSubmit" report-submit='true'>
   <view class="container">
-    <text>设置口令</text><input type="text" class="input" name="kl"></input>
+    <text>设置口令</text><input type="text" class="input" name="kl" value="测试"></input>
   </view>
   <view class="container">
-    <text>赏金 (元)</text><input type="digit" class="input" name="sj"></input>
+    <text>赏金 (元)</text><input type="digit" class="input" name="sj" value='{{sum}}'></input>
   </view>
   <view class="container">
-    <text>数量 (个)</text><input type="number" class="input" name="sl"></input>
+    <text>数量 (个)</text><input type="number" class="input" name="sl" value='{{num}}'></input>
   </view>
   <view>
     <text>广告</text>

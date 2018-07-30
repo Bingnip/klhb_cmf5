@@ -17,7 +17,7 @@ App({
         if(res.code) {    
           codes = res.code;
           loginInfo.code = res.code;
-           //获取用户信息
+          //获取用户信息
           wx.getSetting({
             success: res => {
               //用户已授权
